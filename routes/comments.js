@@ -21,7 +21,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 			res.redirect('back');
 		}else{
 			Comments.create(req.body.comment, function(err, comment){
-				if(err || !foundComment){
+				if(err || !comment){
 					req.flash('error', 'Comment not found')
 					res.redirect('back');
 				}else{
