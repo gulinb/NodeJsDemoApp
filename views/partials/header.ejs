@@ -9,23 +9,23 @@
 	<body>
 
 		<nav class="navbar navbar-dark bg-dark  navbar-expand-lg">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">YelpCamp</a> 
-		</div>
-		<div class="collapse navbar-collapse justify-content-end">
-			<ul class="navbar-nav mt-2 mt-lg-0">
-				<% if(!currentUser){ %>
-				<li ><a href="/login" class="nav-link">Login</a></li>
-				<li ><a href="/register" class="nav-link">Sign Up</a></li>
-				<% }else{ %>
-				<li ><a class='nav-link'>Signed In As <%=currentUser.username %> !</a></li>
-				<li ><a href="/logout" class="nav-link">Logout</a></li>
-				<% } %>
-			</ul>
-		</div>
-	</div>
-</nav>
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">YelpCamp</a> 
+				</div>
+				<div class="collapse navbar-collapse justify-content-end">
+					<ul class="navbar-nav mt-2 mt-lg-0">
+						<% if(!currentUser){ %>
+							<li ><a href="/login" class="nav-link">Login</a></li>
+							<li ><a href="/register" class="nav-link">Sign Up</a></li>
+						<% }else{ %>
+						<li ><a class='nav-link'>Signed In As <%=currentUser.username %> !</a></li>
+						<li ><a href="/logout" class="nav-link">Logout</a></li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
 		<div class='container mt-3'>
 			<% if(error && error.length >0 ){ %>

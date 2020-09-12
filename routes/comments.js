@@ -1,10 +1,11 @@
-var express = require('express')
-var router = express.Router({mergeParams : true});
-var Campground = require('../models/campground');
-var Comments = require('../models/comment');
-var middleware = require('../middleware');
+const express    = require('express'),
+      router     = express.Router({mergeParams : true}),
+      Campground = require('../models/campground'),
+      Comments   = require('../models/comment'),
+      middleware = require('../middleware');
 
 router.get("/new", middleware.isLoggedIn, function(req, res){
+	
 	Campground.findById(req.params.id, function(err, foundCampground){
 		if(err){
 			console.log(err)
@@ -14,7 +15,10 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 	})
 })
 
+
+
 router.post("/", middleware.isLoggedIn, function(req, res){
+	
 	Campground.findById(req.params.id, function(err, foundCampground){
 		if(err || !foundCampground){
 			req.flash('error', "Campground not found");
@@ -38,7 +42,10 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 	})
 })
 
+
+
 router.get('/:comment_id/edit', middleware.checkCommentOwnership, function(req, res){
+	
 	Campground.findById(req.params.id, function(err, foundCampground){
 		if(err || !foundCampground){
 			req.flash('error', "Campground not found");
@@ -56,11 +63,14 @@ router.get('/:comment_id/edit', middleware.checkCommentOwnership, function(req, 
 	})
 })
 
+
+
 router.put('/:comment_id', middleware.checkCommentOwnership, function(req, res){
+	
 	Comments.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updateComment){
 		if(err || !updateComment){
-					req.flash('error', 'Comment not found')
-					res.redirect('back');
+			req.flash('error', 'Comment not found')
+			res.redirect('back');
 		}else{
 			res.redirect('/campgrounds/'+req.params.id);
 		}
@@ -68,7 +78,9 @@ router.put('/:comment_id', middleware.checkCommentOwnership, function(req, res){
 })
 
 
+
 router.delete('/:comment_id', middleware.checkCommentOwnership, function(req, res){
+	
 	Comments.findByIdAndRemove(req.params.comment_id, function(err){
 		if(err){
 			res.redirect('back')

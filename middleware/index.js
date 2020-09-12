@@ -1,6 +1,7 @@
-var Campground = require('../models/campground');
-var Comments = require('../models/comment');
-var middlewareObj = {}
+const Campground = require('../models/campground'),
+      Comments   = require('../models/comment');
+
+let middlewareObj = {}
 
 middlewareObj.checkCommentOwnership = function(req, res, next){
 	if(req.isAuthenticated()){
