@@ -1,5 +1,6 @@
 # YelpCamp
 
-$ export DATABASEURL=""
-npm start app.js
+$ export DATABASEURL="mongodb://localhost/yelpcamp"
+
+$ npm start app.js
 
