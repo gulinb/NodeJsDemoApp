@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-	"dev": "PORT=3000 nodemon app.js"
+    "dev": "PORT=3000 nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
