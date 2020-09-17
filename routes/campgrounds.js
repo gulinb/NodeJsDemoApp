@@ -43,23 +43,34 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
 
 router.get("/new", middleware.isLoggedIn, function(req, res){
+	if(req.user.subscribed){
 	res.render("campgrounds/new");
+	}else{
+		req.flash('error', 'You must subscribe!')
+		res.redirect('/campgrounds')
+	}
 })
 
 
 
-router.get("/:id", function(req, res){
+router.get("/:id", middleware.isLoggedIn, function(req, res){
 	
 	Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
 		if(err || !foundCampground){
 			req.flash('error', 'Campground Not Found!');
 			res.redirect('back');
 		}else{
-			res.render("campgrounds/show", {campground: foundCampground});
+			if(req.user.subscribed){
+				res.render("campgrounds/show", {campground: foundCampground});
+			}else{
+				req.flash('error', 'You must subscribe!')
+				res.redirect('/campgrounds')
+			}
+				
 		}
 	})
-	
 })
+	
 
 
 

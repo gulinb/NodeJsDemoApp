@@ -11,6 +11,11 @@
 		</p>
 		<p>
 			<a class="btn btn-primary btn-md" href="/campgrounds/new">Add New Campground!</a>
+			<% if(currentUser){ 
+				if(!currentUser.subscribed){%>
+			<a class="btn btn-primary btn-md" href="/checkout">Pay Subscription!</a>
+			<% }
+			}%>
 		</p>
 	</header>
 </div>
@@ -22,7 +27,7 @@
 				<figure class="figure">
 					<img src="<%= camp.image%>" class="figure-img img-thumbnail">
 					<figcaption class="figure-caption"><h4><%= camp.name %></h4></figcaption>
-					<a href="/campgrounds/<%= camp._id %>" class="btn btn-primary">More info</a>
+						<a href="/campgrounds/<%= camp._id %>" class="btn btn-primary">More info</a>
 				</figure>
 			</div>
 		<% }); %>

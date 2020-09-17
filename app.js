@@ -16,6 +16,7 @@ const express          = require("express"),
 
 
 
+
 mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -65,6 +66,7 @@ app.use(authRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
 app.use("/campgrounds", campgroundRoutes);
+
 
 
 const port = process.env.PORT || 3000;
