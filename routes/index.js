@@ -91,7 +91,7 @@ router.post('/create-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: SUCCESS_URL ,
+    success_url: process.env.SUCCESS_URL ,
     cancel_url: `https://mongodb-ykwbx.run-eu-central1.goorm.io/campgrounds`,
 	client_reference_id: req.user.id,
 	
